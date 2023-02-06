@@ -10,8 +10,12 @@
 # 새로운 평균을 구하는 프로그램을 작성하시오.
 
 n=int(input())
+grade_list=list(map(int,input().split()))
 
-for i in range(n):
-    grade=int(input())
+# 조작한 점수를 담을 빈 리스트 생성
+new_list=[]
+for grade in grade_list:
+    new_list.append(grade/max(grade_list)*100)
 
-M=max()
+new_avg=sum(new_list)/n
+print(new_avg)
