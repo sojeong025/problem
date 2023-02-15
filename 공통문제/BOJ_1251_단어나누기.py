@@ -1,10 +1,12 @@
+import sys
+sys.stdin = open('input.txt')
+
 word = input()
 
-# 단어의 조합들을 담을 리스트
-lst = []
+for i in range(1, len(word)):
+    for j in range(2, len(word)):
+        a = word[:i]
+        b = word[i:j]
+        c = word[j:]
 
-for i in range(len(word)):
-    # 뒤집은 단어들 조각 담을 곳
-    rev = []
-    for j in word:
-        rev.append(word[0:i:] + word[i:]
+        re_a, re_b, re_c = a[::-1], b[::-1], c[::-1]
