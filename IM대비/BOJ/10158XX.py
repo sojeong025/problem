@@ -5,24 +5,17 @@ w, h = map(int, input().split())
 p, q = map(int, input().split())
 t = int(input())
 
-col = p
-row = q
-count = 0
+a = (p + t) // w  # 증가하는 부분인지 감소하는 부분인지 확인
+b = (q + t) // h  # 증가하는 부분인지 감소하는 부분인지 확인
 
-while True:
-    col += 1
-    row += 1
-    if row == h:
-        q -= 1
-    elif row == 0:
-        q += 1
+if a % 2 == 0:  # 해당 값이 증가하는 부분이라면
+    x = (p + t) % w
+else:  # 해당 값이 감소하는 부분이라면
+    x = w - (p + t) % w
 
-    if col == w:
-        p -= 1
-    elif col == 0:
-        p += 1
+if b % 2 == 0:  # 해당 값이 감소하는 부분이라면
+    y = (q + t) % h
+else:  # 해당 값이 감소하는 부분이라면
+    y = h - (q + t) % h
 
-    count += 1
-    if t == count:
-        print((col, row))
-        break
+print(x, y)

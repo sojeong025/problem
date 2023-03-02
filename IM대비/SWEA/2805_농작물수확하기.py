@@ -13,13 +13,12 @@ for tc in range(1, T+1):
 
     mid = N//2
     money = 0
-    temp = -1
     for i in range(N):
-        if i >= mid:
-            temp = 1
-        for j in range(abs(i-mid), abs(mid-N)):
-            money += farm[i][j]
-        mid += temp
+        if i <= mid:
+            money += sum(farm[i][mid-i:mid+i+1])
+        else:
+            money += sum(farm[i][mid+i-N+1:mid-(i-N)])
+
     print(f'#{tc} {money}')
 
 
