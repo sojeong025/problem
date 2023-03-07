@@ -8,6 +8,7 @@ for _ in range(N):
     meeting.append((S, E))
 
 meeting.sort(key=lambda x: (x[1], x[0]))
+
 end_time = 0
 cnt = 0
 for S, E in meeting:
