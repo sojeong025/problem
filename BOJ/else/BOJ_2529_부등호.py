@@ -1,11 +1,7 @@
 """
-'<'와 '>' 가 k개 나열된 순서열 A : 부등호 사이 0부터 9까지의 숫자
-제시된 K개 부등호 순서 만족하는 K+1 정수 중에서 최댓값과 최솟값 찾아야함
-
-check 함수 : sign 부등호 종류로 i와 j 선택 -> 백트래킹 활용
-중복 없이 숫자 넣으려면 0-9까지 for문 돌리기
-
-조건 통과한 문자열 처음 생긴거면 제일 작은거 -> 제일 마지막에 구해진건 제일 큰거
+조건 확인
+부등호를 기준으로 한 인접 숫자들은 부등호가 성립되어야 함
+(K+1)개 선택된 숫자가 모두 다르며, 최솟값 최대값 추출
 
 """
 
@@ -24,12 +20,16 @@ def backtracking(depth, tmp):
     global max_num, min_num
 
     if depth == K + 1:
+        # 맨 처음 생성된 tmp -> 최소값
         if len(min_num) == 0:
             min_num = tmp
+        # 계속 대입 후 마지막에 생성된 tmp -> 최대값
         else:
             max_num = tmp
         return
 
+    # 왼쪽 숫자 -> 현재 담겨진 숫자 중 가장 마지막 숫자 꺼내야 하므로 tmp[-1]
+    # 오른쪽 숫자 -> 현재 tmp에 들어가려는 숫자 l -> check 함수 위해 str로 타입 변경
     else:
         for l in range(10):
             if not visited[l]:
@@ -39,8 +39,9 @@ def backtracking(depth, tmp):
                     backtracking(depth+1, tmp + str(l))
                     visited[l] = 0
 
-
+# K = 부등호 문자의 개수 -> 문자는 K+1개
 K = int(input())
+# 부등호 종류
 sign = input().split()
 
 visited = [0] * 10
