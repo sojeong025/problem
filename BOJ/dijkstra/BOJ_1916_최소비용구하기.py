@@ -1,10 +1,7 @@
-import sys
-sys.stdin = open('input.txt')
-# input = sys.stdin.readline()
 import heapq
+import sys
+input = sys.stdin.readline
 
-<<<<<<< HEAD
-=======
 def dijkstra(start):
     q = []
     # 시작 노드로 가기 위한 최단 경로는 0으로 설정하여, 큐에 삽입
@@ -24,7 +21,6 @@ def dijkstra(start):
                 cost[i[0]] = ans
                 heapq.heappush(q, (ans, i[0]))
 
->>>>>>> 493f9c5100d5b901f10a60d5ab569b3bf7e42d04
 
 INF = int(1e9)
 N = int(input())    # N : 도시의 개수
@@ -39,18 +35,10 @@ cost = [INF] * (N+1)
 # 모든 간선 정보 입력받기
 for _ in range(M):
     s, e, w = map(int, input().split())
-<<<<<<< HEAD
-    adjM[s][e] = w
-=======
     # s번 노드에서 e번 노드로 가는 비용이 w라는 의미
     graph[s].append((e,w))
->>>>>>> 493f9c5100d5b901f10a60d5ab569b3bf7e42d04
 
 start, end = map(int, input().split())
 
-<<<<<<< HEAD
-print(start, end)
-=======
 dijkstra(start)
 print(cost[end])
->>>>>>> 493f9c5100d5b901f10a60d5ab569b3bf7e42d04
